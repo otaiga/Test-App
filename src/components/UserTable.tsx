@@ -47,24 +47,29 @@ const formattedEntry = (
 // Display User Table
 const UserTable = ({
   data,
-  keys,
+  checkboxes,
 }: {
   data: { [key: string]: number | string }[];
-  keys: string[];
+  checkboxes: {
+    [key: string]: boolean;
+  };
 }) => {
+  const keys = Object.keys(checkboxes);
   return (
     <table className="min-w-full text-left">
       <thead>
         <tr>
-          {keys.map((name, i) => {
+          {Object.entries(checkboxes).map(([name, checked], i) => {
             return (
-              <th
-                key={i}
-                scope="col"
-                className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-4"
-              >
-                {capitalise(name)}
-              </th>
+              checked && (
+                <th
+                  key={i}
+                  scope="col"
+                  className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-4"
+                >
+                  {capitalise(name)}
+                </th>
+              )
             );
           })}
         </tr>
@@ -75,7 +80,7 @@ const UserTable = ({
           <tr key={record.id}>
             {/* Map over what we need to pick as row entries from each entry in the data array */}
             {keys.map((key) => {
-              return formattedEntry(key, record);
+              return checkboxes[key] && formattedEntry(key, record);
             })}
           </tr>
         ))}
