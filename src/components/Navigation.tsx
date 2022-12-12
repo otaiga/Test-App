@@ -1,17 +1,23 @@
+import { UsersIcon, EyeDropperIcon } from "@heroicons/react/24/outline";
 import { NavLink } from "react-router-dom";
+import { ResourceType } from "../lib/apiClient";
 import { capitalise } from "../lib/utils";
 
 // Define types for Nav
 export type NavType = {
-  name: string;
+  name: ResourceType;
+  icon: (
+    props: React.ComponentProps<"svg"> & { title?: string; titleId?: string }
+  ) => JSX.Element;
   href: string;
 };
 
 // Create Nav array
 const navigationMenu: NavType[] = [
-  { name: "users", href: "/" },
+  { name: "users", icon: UsersIcon, href: "/" },
   {
     name: "colors",
+    icon: EyeDropperIcon,
     href: "/colors",
   },
 ];
@@ -23,6 +29,7 @@ const isActiveLink = (isActive: boolean) => {
     : "text-black hover:bg-blue-700 hover:text-white";
 };
 
+// Navigation component
 const Navigation = () => {
   return (
     <nav className="flex-1 space-y-1 px-2 py-4">
@@ -36,6 +43,10 @@ const Navigation = () => {
             )}`
           }
         >
+          <item.icon
+            className="mr-3 flex-shrink-0 h-6 w-6"
+            aria-hidden="true"
+          />
           {capitalise(item.name)}
         </NavLink>
       ))}
