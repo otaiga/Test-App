@@ -1,5 +1,6 @@
 import { capitalise } from "../lib/utils";
 
+// Checkbox group component expects checkbox labels and callback function
 const CheckboxGroup = ({
   checkboxes,
   updateCheckboxes,
