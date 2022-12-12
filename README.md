@@ -9,9 +9,11 @@ Two routes available:
 - Users (root)
 - Colours
 
-## Pre-requisites
+## Stack
 
 - Node.js v18
+- Tailwind CSS
+- React
 
 ## Development
 
@@ -19,3 +21,5 @@ Two routes available:
 - `npm install` - Install packages
 - `npm start` - Start running client in development mode. Visit <http://localhost:3000>
 - `npm test` - Run test suites
+
+Check it out [here](https://test-app-ecru-seven.vercel.app/)
