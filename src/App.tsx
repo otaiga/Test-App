@@ -1,11 +1,14 @@
 import { BrowserRouter as Router } from "react-router-dom";
+import Layout from "./components/Layout";
 import Routes from "./Routes";
 
 // Wrapped with router component
 function App() {
   return (
     <Router>
-      <Routes />
+      <Layout>
+        <Routes />
+      </Layout>
     </Router>
   );
 }
