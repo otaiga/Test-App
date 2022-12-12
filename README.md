@@ -22,4 +22,4 @@ Two routes available:
 - `npm start` - Start running client in development mode. Visit <http://localhost:3000>
 - `npm test` - Run test suites
 
-Check it out [here](https://test-app-ecru-seven.vercel.app/)
+Check it out [here](https://test-app-otaiga.vercel.app/)
