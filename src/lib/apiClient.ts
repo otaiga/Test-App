@@ -24,9 +24,12 @@ export type ColourData = {
 
 // Call the fake API to obtain data with resource required
 export const getApiData = async (
-  resource: ResourceType
+  resource: ResourceType,
+  signal?: AbortSignal
 ): Promise<{ data: UserData[] | ColourData[] }> => {
-  const res = await axios.get(`${BASE_URL}${resource}?page=1&per_page=5'`);
+  const res = await axios.get(`${BASE_URL}${resource}?page=1&per_page=5'`, {
+    signal,
+  });
   if (res.status !== 200) {
     throw Error(`Issue obtaining ${resource}`);
   }

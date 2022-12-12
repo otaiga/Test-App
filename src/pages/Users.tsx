@@ -30,8 +30,10 @@ const Users = () => {
   // Retrieve data from endpoint
   const retrieveData = async () => {
     setLoading(true);
+    const controller = new AbortController();
+    const signal = controller.signal;
     try {
-      const dataResponse = await getApiData("users");
+      const dataResponse = await getApiData("users", signal);
       setUsers(dataResponse.data as UserData[]);
       setLoading(false);
     } catch (err) {
@@ -39,6 +41,10 @@ const Users = () => {
       setError(true);
       setLoading(false);
     }
+    return () => {
+      // cancel the request before the component unmounts
+      controller.abort();
+    };
   };
 
   useEffect(() => {
