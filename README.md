@@ -6,8 +6,8 @@ Implementation of a simple Single Page Application
 
 Two routes available:
 
-- Users (root)
-- Colours
+- "/" - Users Table
+- "/colors" - Colors Table
 
 ## Stack
 
