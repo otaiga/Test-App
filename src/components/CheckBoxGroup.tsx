@@ -9,10 +9,10 @@ const CheckboxGroup = ({
   updateCheckboxes: (name: string, value: boolean) => void;
 }) => {
   return (
-    <div className="flex ring-1 ring-gray-400 p-3 w-full justify-between">
+    <div className="flex ring-1 ring-gray-400 py-2 sm:py-3 sm:px-3 w-full justify-between">
       {Object.entries(checkboxes).map(([name, value], i) => {
         return (
-          <div key={i} className="flex justify-between px-4">
+          <div key={i} className="flex justify-between px-2 sm:px-4">
             <label className="flex">
               <input
                 name={name}
