@@ -2,9 +2,13 @@ import { useEffect, useState } from "react";
 import CheckBoxGroup from "../components/CheckBoxGroup";
 import ColorTable from "../components/ColorTable";
 import { ColourData, getApiData } from "../lib/apiClient";
+import ErrorNotification from "../components/ErrorNotification";
+import Spinner from "../components/Spinner";
 
 // Users page to display from API results in table format
 const Users = () => {
+  // Allow for error states
+  const [error, setError] = useState<boolean>(false);
   // Allow wait for load from api
   const [loading, setLoading] = useState(false);
   // Set color state and checkboxes
@@ -16,7 +20,7 @@ const Users = () => {
     id: true,
   });
 
-  // Update the checkboxes
+  // Update the checkboxes with callback from CheckBoxGroup
   const updateCheckboxes = (name: string, value: boolean) => {
     const currentBoxes = { ...checkboxes };
     currentBoxes[name] = !value;
@@ -32,6 +36,7 @@ const Users = () => {
       setLoading(false);
     } catch (err) {
       console.log("Error: ", err);
+      setError(true);
       setLoading(false);
     }
   };
@@ -61,7 +66,13 @@ const Users = () => {
           </div>
         </div>
       </div>
-      {loading && <div aria-label="loading">Loading</div>}
+      {error && (
+        <ErrorNotification
+          title="Error"
+          description="Unable to populate colour data"
+        />
+      )}
+      {loading && <Spinner />}
     </main>
   );
 };

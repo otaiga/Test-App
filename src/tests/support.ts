@@ -57,3 +57,12 @@ export const server = setupServer(
     return res(ctx.json({ data: userData }));
   })
 );
+
+export const failServer = setupServer(
+  rest.get("https://reqres.in/api/colors", async (_req, res, ctx) => {
+    return res(ctx.status(500));
+  }),
+  rest.get("https://reqres.in/api/users", async (_req, res, ctx) => {
+    return res(ctx.status(500));
+  })
+);

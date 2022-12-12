@@ -2,9 +2,13 @@ import { useEffect, useState } from "react";
 import UserTable from "../components/UserTable";
 import CheckBoxGroup from "../components/CheckBoxGroup";
 import { UserData, getApiData } from "../lib/apiClient";
+import ErrorNotification from "../components/ErrorNotification";
+import Spinner from "../components/Spinner";
 
 // Users page to display from API results in table format
 const Users = () => {
+  // Allow for error states
+  const [error, setError] = useState<boolean>(false);
   // Allow wait for load from api
   const [loading, setLoading] = useState(false);
   // set state for users and checkboxes
@@ -32,6 +36,7 @@ const Users = () => {
       setLoading(false);
     } catch (err) {
       console.log("Error: ", err);
+      setError(true);
       setLoading(false);
     }
   };
@@ -61,7 +66,13 @@ const Users = () => {
           </div>
         </div>
       </div>
-      {loading && <div aria-label="loading">Loading</div>}
+      {error && (
+        <ErrorNotification
+          title="Error"
+          description="Unable to populate user data"
+        />
+      )}
+      {loading && <Spinner />}
     </main>
   );
 };

@@ -17,5 +17,5 @@ Two routes available:
 
 - Clone git repository & open in terminal
 - `npm install` - Install packages
-- `npm start` - Start running client in development mode
+- `npm start` - Start running client in development mode. Visit <http://localhost:3000>
 - `npm test` - Run test suites

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@headlessui/react": "^1.7.5",
     "@heroicons/react": "^2.0.13",
     "axios": "^1.2.1",
     "react": "^18.2.0",
@@ -29,7 +30,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!axios)/'",
+    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!axios)/' --silent",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
